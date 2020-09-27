@@ -28,6 +28,9 @@ jobs:
       run: go get -v -t -d ./...
     - name: Test
       run: go test -v .
+    - name: Build
+      if: ${{ matrix.go-version == ubuntu-latest }}
+      run: echo "aaa"
   docker-build:
     runs-on:  ubuntu-latest
     needs: test
