@@ -9,6 +9,7 @@
 *.dll
 *.so
 *.dylib
+sample-web
 
 # Test binary, built with `go test -c`
 *.test
