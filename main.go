@@ -1,17 +1,32 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"net/http"
+
+	"github.com/gin-gonic/gin"
+)
 
 func setupRouter() *gin.Engine {
 	r := gin.Default()
 	r.LoadHTMLGlob("templates/*.html")
 	r.GET("/", func(c *gin.Context) {
-		c.HTML(200, "index.html", gin.H{
+		c.HTML(200, "login.html", gin.H{
 			"useragent": c.GetHeader("User-Agent"),
 		})
 	})
+	r.POST("/login", login)
 	r.StaticFile("/favicon.ico", "./favicon.ico")
 	return r
+}
+
+func login(c *gin.Context) {
+	username := c.PostForm("username")
+	password := c.PostForm("password")
+	if username != "user" || password != "password" {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "Authentication faild"})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"message": "Successfully authenticated user"})
 }
 
 func main() {
