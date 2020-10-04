@@ -9,8 +9,10 @@
 *.dll
 *.so
 *.dylib
-sample-web
+sample-web*
 main
+Makefile
+dist/
 
 # Test binary, built with `go test -c`
 *.test

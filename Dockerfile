@@ -1,5 +1,4 @@
 FROM alpine:3.12.0
-
+COPY . /home
 WORKDIR /home
-COPY ./sample-web /home
 CMD ["./sample-web"]
