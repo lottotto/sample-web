@@ -65,7 +65,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: sample-web
-
+      - run: chmod +x sample-web
       - name: docker build
         env:
           SHA: ${{ github.sha  }}
@@ -74,7 +74,10 @@ jobs:
       - name: docker push
         env:
           SHA: ${{ github.sha  }}
-        run: docker push danish9966/sample-web:$SHA
+        run: |
+          docker push danish9966/sample-web:$SHA
+          docker tag danish9966/sample-web:$SHA danish9966/sample-web
+          docker push danish9966/sample-web
       # - name: setup docker buildx
       #   uses: docker/setup-buildx-action@v1
       # - name: check
