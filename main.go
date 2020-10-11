@@ -15,7 +15,8 @@ func setupRouter() *gin.Engine {
 		})
 	})
 	r.POST("/login", login)
-	r.StaticFile("/favicon.ico", "./favicon.ico")
+	r.StaticFile("/favicon.ico", "./assets/favicon.ico")
+	r.Static("/assets", "./assets")
 	return r
 }
 
