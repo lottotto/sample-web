@@ -14,6 +14,7 @@ func setupRouter() *gin.Engine {
 			"useragent": c.GetHeader("User-Agent"),
 		})
 	})
+	r.GET("/list", getAllEmployee)
 	r.POST("/login", login)
 	r.StaticFile("/favicon.ico", "./assets/favicon.ico")
 	r.Static("/assets", "./assets")

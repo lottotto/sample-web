@@ -5,4 +5,5 @@
 
 ```
 GOOS=linux GOARCH=amd64 go build -o sample-web main.go
+goose --dir=db postgres "host=localhost user=postgres password=postgres dbname=postgres sslmode=disable"
 ```
