@@ -13,6 +13,7 @@ sample-web*
 main
 Makefile
 dist/
+credencials
 
 # Test binary, built with `go test -c`
 *.test

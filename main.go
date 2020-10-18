@@ -24,6 +24,8 @@ func setupRouter() *gin.Engine {
 	})
 	r.POST("/login", login)
 	r.GET("/logout", logout)
+	r.GET("/github", loginGithub)
+	r.GET("/auth/github/callback", callbackGithub)
 	loginonly := r.Group("/secret")
 	loginonly.Use(AuthRequired)
 	{
